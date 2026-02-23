@@ -31,6 +31,8 @@ async function getUsers(): Promise<HttpBinResponse> {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   // Parse the JSON and cast it to our User array type
   const users: HttpBinResponse = await response.json();
   return users;
