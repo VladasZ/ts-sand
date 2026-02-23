@@ -34,8 +34,10 @@ export abstract class App {
     r.SetTargetFPS(displayFps);
   }
 
-  private event_loop() {
+  private async event_loop() {
     while (!r.WindowShouldClose()) {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
       Input.check_touches();
 
       r.BeginDrawing();

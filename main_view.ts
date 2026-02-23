@@ -3,6 +3,39 @@ import { Button, View } from "./ui";
 import { AnimTimer } from "./ui/anim_timer";
 import { UIAnimation } from "./ui/ui_animation";
 
+interface HttpBinHeaders {
+  Accept: string;
+  "Accept-Encoding": string;
+  "Accept-Language": string;
+  Host: string;
+  "User-Agent": string;
+  "X-Amzn-Trace-Id": string;
+  // Add others if you need them specifically
+}
+
+interface HttpBinResponse {
+  args: Record<string, any>;
+  data: string;
+  files: Record<string, any>;
+  form: Record<string, any>;
+  headers: HttpBinHeaders;
+  origin: string;
+  url: string;
+}
+
+async function getUsers(): Promise<HttpBinResponse> {
+  const response = await fetch("https://httpbin.org/delay/1");
+
+  // Check if the request was successful
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  // Parse the JSON and cast it to our User array type
+  const users: HttpBinResponse = await response.json();
+  return users;
+}
+
 export class MainView extends View {
   override setup() {
     this.frame = Rect.new(100, 100, 600, 200);
@@ -36,6 +69,12 @@ export class MainView extends View {
     button.color = WHITE;
     button.on_tap = () => {
       console.log("Button tapped");
+
+      getUsers().then((data) => {
+        console.log(data);
+      });
+
+      console.log("Request sent");
     };
     this.add_subview(button);
   }
