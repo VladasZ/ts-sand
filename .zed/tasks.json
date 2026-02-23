@@ -1,0 +1,6 @@
+[
+  {
+    "label": "Run",
+    "command": "npm start",
+  },
+]

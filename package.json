@@ -4,6 +4,6 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "start": "tsx sand.ts"
+    "start": "tsx main.ts"
   }
 }
