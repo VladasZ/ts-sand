@@ -1,13 +1,22 @@
 import { Point } from "./point";
+import { Size } from "./size";
 
 export class Rect {
   constructor(
     public origin: Point,
-    public size: Point,
+    public size: Size,
   ) {}
 
+  static get default(): Rect {
+    return new Rect(Point.default, Size.default);
+  }
+
+  get clone(): Rect {
+    return Rect.new(this.x, this.y, this.width, this.height);
+  }
+
   static new(x: number, y: number, width: number, height: number): Rect {
-    return new Rect(new Point(x, y), new Point(width, height));
+    return new Rect(new Point(x, y), new Size(width, height));
   }
 
   get x(): number {
@@ -25,16 +34,16 @@ export class Rect {
   }
 
   get width(): number {
-    return this.size.x;
+    return this.size.width;
   }
   set width(val: number) {
-    this.size.x = val;
+    this.size.width = val;
   }
 
   get height(): number {
-    return this.size.y;
+    return this.size.height;
   }
   set height(val: number) {
-    this.size.y = val;
+    this.size.height = val;
   }
 }

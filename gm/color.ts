@@ -22,3 +22,5 @@ export const RED = new Color(1, 0, 0, 1);
 export const GREEN = new Color(0, 1, 0, 1);
 export const BLUE = new Color(0, 0, 1, 1);
 export const BLACK = new Color(0, 0, 0, 1);
+export const WHITE = new Color(1, 1, 1, 1);
+export const GRAY = new Color(0.5, 0.5, 0.5, 1);
