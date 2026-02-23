@@ -11,4 +11,8 @@ export class Touch {
     public position: Point,
     public event: TouchEvent,
   ) {}
+
+  get is_began(): boolean {
+    return this.event == TouchEvent.Began;
+  }
 }

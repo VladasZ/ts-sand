@@ -1,4 +1,6 @@
 import { Color, Rect, WHITE } from "../gm";
+import { Input } from "./input";
+import { Touch } from "./touch";
 import { UIAnimation } from "./ui_animation";
 
 export class View {
@@ -50,4 +52,10 @@ export class View {
 
     this.animations = this.animations.filter((a) => !a.isFinished());
   }
+
+  enable_touch() {
+    Input.touch_listeners.push(new WeakRef(this));
+  }
+
+  on_touch(touch: Touch) {}
 }

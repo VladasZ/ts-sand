@@ -19,6 +19,15 @@ export class Rect {
     return new Rect(new Point(x, y), new Size(width, height));
   }
 
+  contains(point: Point): boolean {
+    return (
+      point.x >= this.x &&
+      point.y >= this.y &&
+      point.x <= this.x + this.width &&
+      point.y <= this.y + this.height
+    );
+  }
+
   get x(): number {
     return this.origin.x;
   }

@@ -36,7 +36,7 @@ export abstract class App {
 
   private event_loop() {
     while (!r.WindowShouldClose()) {
-      const touches = Input.get_touches();
+      Input.check_touches();
 
       r.BeginDrawing();
       r.ClearBackground(this.clear_color().raylib);

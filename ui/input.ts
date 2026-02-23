@@ -2,9 +2,12 @@ import r from "raylib";
 
 import { Touch, TouchEvent } from "./touch";
 import { Point } from "../gm";
+import { View } from "./view";
 
 export class Input {
-  static get_touches(): Touch[] {
+  static touch_listeners: WeakRef<View>[] = [];
+
+  static check_touches() {
     const touches: Touch[] = [];
 
     const mousePos = r.GetMousePosition();
@@ -21,6 +24,15 @@ export class Input {
       }
     }
 
-    return touches;
+    for (const touch of touches) {
+      for (const weak_view of this.touch_listeners) {        
+        const view = weak_view.deref();
+        if (!view) continue;
+
+        if (view.absolute_frame.contains(touch.position)) {
+          view.on_touch(touch);
+        }
+      }
+    }
   }
 }
