@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "start": "tsx sand.ts"
+  }
+}
