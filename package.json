@@ -5,5 +5,8 @@
   },
   "scripts": {
     "start": "tsx main.ts"
+  },
+  "dependencies": {
+    "raylib": "^0.14.0"
   }
 }
