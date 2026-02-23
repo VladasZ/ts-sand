@@ -4,9 +4,6 @@ import { GREEN } from "./gm";
 import { App } from "./system";
 
 class TestApp extends App {
-  new(): void {
-    new TestApp();
-  }
   make_root_view(): View {
     return new View(GREEN, Rect.new(100, 100, 100, 100));
   }

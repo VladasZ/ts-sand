@@ -12,14 +12,12 @@ export abstract class App {
   run() {
     this.setup_raylib();
     this.root_view = this.make_root_view();
-    console.log("Hello");
-    console.log(this.root_view);
     this.event_loop();
   }
 
   private setup_raylib() {
     r.SetTraceLogLevel(r.LOG_NONE);
-    r.InitWindow(800, 450, "Hello Raylib!");
+    r.InitWindow(800, 450, "Hello TypeScript!");
 
     const currentMonitor = r.GetCurrentMonitor();
     const displayFps = r.GetMonitorRefreshRate(currentMonitor);
