@@ -4,6 +4,8 @@ import { View } from "../ui";
 
 export class UIDrawer {
   static draw_view(view: View) {
+    view.commit_animations();
+
     let frame = view.absolute_frame;
     r.DrawRectangle(
       frame.x,

@@ -1,4 +1,5 @@
 import { Color, Rect, WHITE } from "../gm";
+import { UIAnimation } from "./ui_animation";
 
 export class View {
   color: Color;
@@ -7,10 +8,13 @@ export class View {
   superview?: View;
   subviews: View[];
 
+  animations: UIAnimation[];
+
   constructor(rect: Rect) {
     this.color = WHITE;
     this.frame = rect;
     this.subviews = [];
+    this.animations = [];
   }
 
   setup() {}
@@ -33,5 +37,17 @@ export class View {
     }
 
     return frame;
+  }
+
+  commit_animations() {
+    if (!this.animations.length) {
+      return;
+    }
+
+    for (const anim of this.animations) {
+      anim.commit(this);
+    }
+
+    this.animations = this.animations.filter((a) => !a.isFinished());
   }
 }
